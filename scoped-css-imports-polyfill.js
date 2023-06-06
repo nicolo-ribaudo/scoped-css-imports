@@ -15,10 +15,14 @@ addEventListener("fetch", function (event) {
 async function fetchScopedCSS(request) {
   const cssResponse = await fetch(request);
   const css = await cssResponse.text();
-  const uuid = "_" + crypto.randomUUID();
+  const uuid = crypto.randomUUID();
   const body = `
     const sheet = new CSSStyleSheet();
-    sheet.replaceSync("@scope (.${uuid}) {" + ${JSON.stringify(css)} + "}");
+    sheet.replaceSync(
+      "@scope ([style-scope='${uuid}']) to (:scope [style-scope]) {"
+        + ${JSON.stringify(css)}
+        + "}"
+    );
     document.adoptedStyleSheets.push(sheet);
     export default ${JSON.stringify(uuid)};
   `;

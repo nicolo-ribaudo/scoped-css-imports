@@ -1,10 +1,11 @@
 import { html } from "htm/preact";
-import styles from "./styles.css" assert { type: "css", inject: "scoped" };
+import scopeName from "./styles.css" assert { type: "css", inject: "scoped" };
+import Button from "../Button/index.js";
 
 export default function Label() {
   return html`
-    <div class=${styles}>
-      This is a text: <span class="text">Hello World</span>
+    <div style-scope=${scopeName}>
+      This is a text: <span class="text">Hello World</span>, and it contains a button: <${Button} />
     </div>
   `;
 }
