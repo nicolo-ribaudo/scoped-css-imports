@@ -9,3 +9,5 @@ Using [JS import attributes](https://github.com/tc39/proposal-import-attributes)
 You can see an example in the `src/` directory: both `Button` and `Label` internally use a `.text` class, but they don't conflict with each other.
 
 You can run this example at https://nicolo-ribaudo.github.io/scoped-css-imports/, using Chrome with the _Experimental Web Platform features_ flag enabled in [chrome://flags/](chrome://flags/).
+
+![](./screenshot.png)
