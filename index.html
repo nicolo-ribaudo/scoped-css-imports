@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "@preact/signals": "https://esm.sh/@preact/signals@1.1.3",
+          "preact": "https://esm.sh/preact@10.13.0",
+          "preact/": "https://esm.sh/preact@10.13.0/",
+          "htm": "https://esm.sh/*htm@3.1.1",
+          "htm/": "https://esm.sh/*htm@3.1.1/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module">
+      // Load the polyfill for scoped css imports, then load ./src/index.js
+      if (!navigator.serviceWorker.controller) {
+        const registration = await navigator.serviceWorker.register(
+          "./scoped-css-imports-polyfill.js",
+          { scope: location.pathname }
+        );
+        window.location.reload();
+      } else {
+        import("./src/index.js");
+      }
+    </script>
+  </body>
+</html>
